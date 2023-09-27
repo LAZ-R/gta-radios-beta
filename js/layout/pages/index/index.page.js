@@ -25,7 +25,7 @@ const getGamesButtons = () => {
         string += `
             <button 
                 class="game-button ${game.name == 'San Andreas' ? '' : 'inactive-button'}" 
-                style="background-image: url(./medias/images/covers/${game.cover}.png" 
+                style="background-image: url(./medias/images/covers/${game.cover}.webp)" 
                 ${game.name == 'San Andreas' ? '' : 'disabled'}
                 onclick="navigateTo('./?page=gameRadios&gameId=${game.id}')"></button>
         `

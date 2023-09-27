@@ -17,11 +17,13 @@ let musicArtist;
 let isLooping3 = false;
 let loopTimer3;
 
+let currentRadio;
+
 const getPlayPauseButtonIcon = (radio) => {
     return `<img id="playPauseIcon" class="play-pause-icon" src="./medias/images/font-awsome/circle-pause-solid.svg" alt="test" style="filter: ${FILTER.getFilterStringForHexValue(radio.color)}">`
 }
 
-const getLikeButtonIcon = (radio) => {
+const getLikeButtonIcon = () => {
     let icon = '';
     // Ajouter un check si liked de base ou pas
     //if (radio.isLiked) {
@@ -30,6 +32,10 @@ const getLikeButtonIcon = (radio) => {
         icon = `<img id="likeIcon" class="like-icon" src="./medias/images/font-awsome/heart-regular.svg" alt="unliked" style="filter: ${FILTER.getFilterStringForHexValue('#878787')}">`
     //}
     return icon; 
+}
+
+const getPlaylistModalButtonIcon = () => {
+        return `<img id="playlistModalIcon" class="playlist-modal-icon" src="./medias/images/font-awsome/rectangle-list-regular.svg" alt="unopened-playlist" style="filter: ${FILTER.getFilterStringForHexValue('#878787')}">`
 }
 
 // BACKGROUND ANIMATION -------------------------------------------------------
@@ -62,7 +68,7 @@ const animateBackground = (game, isFirstTime, oldRnd) => {
     }
 
     setTimeout(() => {
-        body.style.backgroundImage = `url(./medias/images/backgrounds/${game.backgrounds[rnd]}.jpg)`;
+        body.style.backgroundImage = `url(./medias/images/backgrounds/${game.backgrounds[rnd]}.webp)`;
     }, isFirstTime ? 500 : 0);
     
     if (body.style.backgroundPosition == 'left top') {
@@ -116,9 +122,17 @@ const setMusicInfos = (radio, isFirstTime, oldMusic) => {
     
         if (musicNameContainer != null && musicArtistContainer != null) {
             if (hasMusicPlaying) {
+                // Gestion playlist
+                const rowElement = document.getElementById('music-row-' + cleanString(musicName));
+                if (rowElement != undefined) {
+                    rowElement.style.border = `1px solid ${radio.color}`;
+                    rowElement.style.backgroundColor = "#2b2b2b"
+                }
+                
                 if (musicName != musicNameContainer.innerHTML && musicArtist != musicArtistContainer.innerHTML) {
                     musicNameContainer.innerHTML = musicName;
                     musicArtistContainer.innerHTML = musicArtist;
+
                     setTimeout(() => {
                         musicNameContainer.style.opacity = 1;
                         musicArtistContainer.style.opacity = 1;
@@ -129,6 +143,17 @@ const setMusicInfos = (radio, isFirstTime, oldMusic) => {
             if (!hasMusicPlaying) {
                 musicNameContainer.style.opacity = 0;
                 musicArtistContainer.style.opacity = 0;
+
+                // Gestion playlist 
+
+                const rows = document.getElementsByClassName('playlist-table-row');
+                if (rows !== undefined) {
+                    for (let i = 0; i < rows.length; i++) {
+                        rows.item(i).style.border = '1px solid transparent';
+                        rows.item(i).style.backgroundColor = "transparent";
+                    };
+                }
+
                 setTimeout(() => {
                     musicNameContainer.innerHTML = '';
                     musicArtistContainer.innerHTML = '';
@@ -210,6 +235,85 @@ const onLikeClick = (radioColor) => {
 }
 window.onLikeClick = onLikeClick;
 
+export const destroyModal = (isFromModalItself) => {
+    const modalBackground = document.getElementById('modalBackground');
+    if (modalBackground != null && modalBackground != undefined) {
+        modalBackground.remove();
+    }
+    if (isFromModalItself) {
+        onPlaylistModalClick();
+    }
+}
+window.destroyModal = destroyModal;
+
+const onPlaylistModalClick = (radioColor) => {
+    if (currentRadio.playlist != undefined) {
+        const playlistModalIcon = document.getElementById('playlistModalIcon');
+        const playlistModalButton = document.getElementById('playlistModalButton');
+
+        if (playlistModalIcon.getAttribute('alt') == 'unopened-playlist') {
+            playlistModalIcon.setAttribute('src', './medias/images/font-awsome/rectangle-list-solid.svg');
+            playlistModalIcon.setAttribute('alt', 'opened-playlist');
+            playlistModalIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue(radioColor)}`);
+
+            playlistModalButton.style.zIndex = '100';
+
+
+            const body = document.getElementById('body');
+            const modalBackground = LAZR.DOM.createElement('div', 'modalBackground', 'modal-background', `
+                <div class="modal-div">
+                    <div class="modal-inner-div">
+                        <span class="modal-title">${currentRadio.name}</span>
+                        ${getPlaylistElement()}
+                    </div>
+                </div>
+            `);
+            modalBackground.addEventListener('click', () => {
+                destroyModal(true);
+            })
+            body.appendChild(modalBackground);
+        } else {
+            playlistModalIcon.setAttribute('src', './medias/images/font-awsome/rectangle-list-regular.svg');
+            playlistModalIcon.setAttribute('alt', 'unopened-playlist');
+            playlistModalIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue('#878787')}`);
+
+            playlistModalButton.style.zIndex = 'auto';
+            // ajouter l'ajout
+        }
+    }
+}
+window.onPlaylistModalClick = onPlaylistModalClick;
+
+const cleanString = (string) => {
+    // Convertit la chaîne en minuscules
+    let cleanedString = string.toLowerCase();
+    // Supprime les accents
+    cleanedString = cleanedString.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    // Supprime les caractères spéciaux (ne laisser que les lettres et les chiffres)
+    cleanedString = cleanedString.replace(/[^a-zA-Z0-9 ]/g, "");
+    // Remplace les espaces par des tirets
+    cleanedString = cleanedString.replace(/\s+/g, '-');
+    return cleanedString;
+}
+
+const getPlaylistElement = () => {
+    let string = `<div class="playlist-table">`;
+    currentRadio.playlist.forEach(title => {
+        string += `
+            <div id="music-row-${cleanString(title.name)}" class="playlist-table-row">
+                <div class="playlist-table-name-div">
+                    <span>${title.name}</span>
+                </div>
+                <div class="playlist-table-artist-div">
+                    <span>${title.artist}</span>
+                </div>
+            </div>
+        `;
+    });
+    string += `</div>`;
+    return string;
+}
+
 // RENDERING ------------------------------------------------------------------
 
 export const renderPage = () => {
@@ -219,7 +323,7 @@ export const renderPage = () => {
     const getRadioIcon = (radio) => {
         return `
             <div class="radio-icon" style="border: 5px solid ${radio.color}">
-                <img src="./medias/images/radio-icons/${radio.icon}.png" class="radio-icon-img" />
+                <img src="./medias/images/radio-icons/${radio.icon}.webp" class="radio-icon-img" />
             </div>
         `;
     }
@@ -239,6 +343,7 @@ export const renderPage = () => {
         radioId = radioIdArray[0];
     }
     const radio = getRadioById(radioId);
+    currentRadio = radio;
 
     const pageTitle = radio.name;
     LAZR.DOM.setHTMLTitle(pageTitle);
@@ -276,9 +381,9 @@ export const renderPage = () => {
             </div>
         </div>
         <div class="radio-controls-container">
-            <button class="music-control-button radio-like-button" onclick="onLikeClick('${radio.color}')">${getLikeButtonIcon(radio)}</button>
-            <button class="music-control-button play-pause-button" onclick="playPause()">${getPlayPauseButtonIcon(radio)}</button>
-            <button class="music-control-button playlist-button">Playlist</button>
+            <button id="radioLikeButton" class="music-control-button radio-like-button" onclick="onLikeClick('${radio.color}')">${getLikeButtonIcon(radio)}</button>
+            <button id="playPauseButton" class="music-control-button play-pause-button" onclick="playPause()">${getPlayPauseButtonIcon(radio)}</button>
+            <button id="playlistModalButton" class="music-control-button playlist-modal-button" onclick="onPlaylistModalClick('${radio.color}')">${getPlaylistModalButtonIcon()}</button>
         </div>
     `);
 

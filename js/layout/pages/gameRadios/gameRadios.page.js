@@ -20,7 +20,7 @@ export const renderPage = () => {
     const getRadioIcon = (radio) => {
         return `
             <div class="radio-icon-small" style="border: 3px solid ${radio.color}">
-                <img src="./medias/images/radio-icons/${radio.icon}.png" class="radio-icon-img-small" />
+                <img src="./medias/images/radio-icons/${radio.icon}.webp" class="radio-icon-img-small" />
             </div>
         `;
     }

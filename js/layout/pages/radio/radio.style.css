@@ -6,7 +6,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 70%;
+    height: 67%;
     background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0, 0, 0, 0.767) 20%, rgba(0, 0, 0, 0.384) 72%, rgba(0,0,0,0) 100%);
     margin-top: 32px;
     color: #ffffff;
@@ -70,7 +70,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 30%;
+    height: 33%;
     background-color: #000000;
     /* border: 1px solid red; */
 }
@@ -122,5 +122,54 @@
 }
 
 .like-icon {
-    height: 35px;
+    height: 32px;
+}
+
+.playlist-modal-icon {
+    height: 32px;
+    z-index: 200;
+}
+
+.playlist-table {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+.playlist-table-row {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 15px;
+    padding: 10px 0;
+    border-radius: 10px;
+    transition: background-color .3s linear, border .3s linear;
+    border: 1px solid transparent;
+}
+.playlist-table-row:last-of-type {
+    margin-bottom: 20px;
+}
+
+.playlist-table-name-div {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+}
+.playlist-table-artist-div {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    width: 100%;
+    text-align: center;
 }
