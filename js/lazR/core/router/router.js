@@ -86,7 +86,7 @@ window.onhashchange = () => {
                 HEADER.edit(
                     false, 
                     logo, 
-                    false 
+                    true 
                 );
             }, 200);
         } else {
@@ -100,7 +100,7 @@ window.onhashchange = () => {
                     HEADER.edit(
                         false, 
                         logo, 
-                        false
+                        true
                     );
                 }, 200);
                 
@@ -133,8 +133,14 @@ window.onhashchange = () => {
                             if (array != null) {
                                 gameId = array[0];
                             }
-                            const game = getGameById(gameId);
-                            pageTitle = game.name;
+                            let isLiked = false;
+                            let game;
+                            if (gameId == 'liked') {
+                                isLiked = true;
+                            } else {
+                                game = getGameById(gameId);
+                            }
+                            pageTitle = isLiked ? 'Likes' : game.name;
                             headerTitle = DOM.createElement('h1', 'headerTitle', 'header-title', `Grand Theft Auto
                             <br>
                             <b>${pageTitle}</b>`);

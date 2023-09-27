@@ -61,12 +61,11 @@ header {
     padding-right: var(--horizontal-padding);
     height: 100%;
     width: 14%;
-    background-color: var(--primary);
+    background-color: transparent;
     transition: opacity .2s linear;
 }
 
 .header-about-icon {
-    opacity: .25;
     height: 40%;
 }
 

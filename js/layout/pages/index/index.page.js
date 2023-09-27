@@ -15,7 +15,7 @@ export const renderHeader = () => {
     HEADER.edit(
         false, 
         logo, 
-        false
+        true
     );
 }
 

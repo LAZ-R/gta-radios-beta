@@ -1,4 +1,5 @@
 import { RADIOS } from "../data/radios.data.js"
+import * as LAZR from '../lazR/lazR.js';
 
 export const getRadiosByGameId = (gameId) => {
     let radios = [];
@@ -18,4 +19,18 @@ export const getRadioById = (radioId) => {
         };
     });
     return radio
+}
+
+export const getLikedRadios = () => {
+    let radios = [];
+    let user = LAZR.STORAGE.getUser();
+    RADIOS.forEach(radio => {
+        user.liked.forEach(like => {
+            if (radio.id == like) {
+                radios.push(radio);
+            }
+        });
+        
+    });
+    return radios;
 }

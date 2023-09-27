@@ -1,13 +1,14 @@
 import { DEFAULT_SETTINGS } from "../../../app-default-settings.js";
 
 const STORAGE = localStorage;
-const appShortName = `gtaradiosbeta`;
+const appShortName = `gtaradiosbeta3`;
 
 if (STORAGE.getItem(`${appShortName}FirstTime`) === null) {
     STORAGE.setItem(`${appShortName}FirstTime`, '0');
     let userTMP = {
         isDev: false,
-        settings: DEFAULT_SETTINGS
+        settings: DEFAULT_SETTINGS,
+        liked: [],
     };
     STORAGE.setItem(`${appShortName}User`, JSON.stringify(userTMP));
 }

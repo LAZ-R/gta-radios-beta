@@ -1,4 +1,5 @@
 import * as LAZR from '../../lazR/lazR.js';
+import * as FILTER from '../../lazR/core/css/filter/filter.js'
 import * as BURGER_MENU from './burgerMenu/burgerMenu.component.js';
 
 const headerNavigateTo = (URL) => {
@@ -32,9 +33,9 @@ export const hideEverything = () => {
  * 
  * @param {boolean} shouldShowPreviousButton 
  * @param {ChildNode} centerAreaNode 
- * @param {boolean} shouldShowAboutButton 
+ * @param {boolean} shouldShowLikedButton 
  */
-export const edit = (shouldShowPreviousButton, centerAreaNode, shouldShowAboutButton) => {
+export const edit = (shouldShowPreviousButton, centerAreaNode, shouldShowLikedButton) => {
     const headerPreviousArea = document.getElementById('headerPreviousArea');
     const headerCenterArea = document.getElementById('headerCenterArea');
     const headerAboutArea = document.getElementById('headerAboutArea');
@@ -47,8 +48,8 @@ export const edit = (shouldShowPreviousButton, centerAreaNode, shouldShowAboutBu
         headerCenterArea.appendChild(centerAreaNode);
         headerCenterArea.style.opacity = 1;
     
-        headerAboutArea.setAttribute( 'onclick',shouldShowAboutButton ? "headerNavigateTo('./?page=about')" : '' );
-        headerAboutArea.style.opacity = shouldShowAboutButton ? '1' : '0';
+        headerAboutArea.setAttribute( 'onclick',shouldShowLikedButton ? "headerNavigateTo('./?page=gameRadios&gameId=liked')" : '' );
+        headerAboutArea.style.opacity = shouldShowLikedButton ? '1' : '0';
     }, 200);
 }
 
@@ -87,14 +88,14 @@ export const renderView = () => {
         'headerAboutArea', 
         'header-about-area', 
         '');
-    //headerAboutArea.setAttribute( 'onclick',"headerNavigateTo('./?page=about')" );
-    const headerAboutIcon = LAZR.DOM.createRootVariableColoredSVGElement(
-        'headerAboutIcon', 
-        'header-about-icon', 
-        './medias/images/font-awsome/circle-info-solid.svg', 
-        'Logo texte indiquant "Mission Hermès" en police futuriste', 
-        '--on-primary');
-    headerAboutArea.appendChild(headerAboutIcon);
+        const headerAboutIcon = `
+            <img 
+                id="headerAboutIcon" 
+                class="header-about-icon" 
+                src="./medias/images/font-awsome/heart-solid.svg" 
+                alt="coeur" 
+                style="filter: ${FILTER.getFilterStringForHexValue('#ff93ff')}"></img>`;
+    headerAboutArea.innerHTML = headerAboutIcon;
     headerAboutArea.style.opacity = 0;
     header.appendChild(headerAboutArea);
 }
