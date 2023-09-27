@@ -1,0 +1,97 @@
+/* Put here any 'header' specific css */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    /*background-color: #000000;*/
+    color: var(--font-color-header);
+}
+
+.header-previous-area {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    padding-left: var(--horizontal-padding);
+    height: 100%;
+    width: 14%;
+    transition: opacity .2s linear;
+}
+
+.header-previous-icon {
+    height: 40%;
+    opacity: 1;
+}
+
+.header-center-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    width: 72%;
+    transition: opacity .2s linear;
+}
+
+.header-center-area > h1 {
+    font-weight: 300;
+    text-align: center;
+}
+
+.header-logo {
+    height: 80%;
+}
+
+.header-title {
+    /* font-family: 'Orbitron-Medium'; */
+    font-size: 15px;
+    /* text-transform: uppercase; */
+    /* letter-spacing: 1px; */
+}
+
+.header-about-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    padding-right: var(--horizontal-padding);
+    height: 100%;
+    width: 14%;
+    background-color: var(--primary);
+    transition: opacity .2s linear;
+}
+
+.header-about-icon {
+    opacity: .25;
+    height: 40%;
+}
+
+/* ==========================
+ MEDIA QUERIES
+========================== */
+
+/* Tablets ----------- */
+@media (min-width : 767px) and (max-width : 1279px) {
+    :root {
+        --header-height: var(--tablet-header-height);
+    }
+}
+
+/* Laptops ----------- */
+
+@media (min-width : 1280px) and (max-width : 1919px) {
+    :root {
+        --header-height: var(--laptop-header-height);
+    }
+}
+
+/* Desktops ----------- */
+@media (min-width: 1920px) {
+    :root {
+        --header-height: var(--desktop-header-height);
+    }
+}

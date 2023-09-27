@@ -1,0 +1,187 @@
+/* Put here any 'about.html' specific css */
+
+.about-category {
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    width: 100%;
+    text-align: center;
+    padding: 10px var(--horizontal-padding) 0 var(--horizontal-padding);
+}
+
+.bottom-category {
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    min-width: 100%;
+    width: 100%;
+    box-shadow: 0px -5px 11px 2px #0000003a;
+    background-color: var(--gray-80);
+}
+
+/* ---------------------------------------------------------------- */
+
+.top-part {
+    min-height: fit-content;
+    max-height: 100%;
+    justify-content: flex-start;
+    overflow-y: hidden;
+}
+
+.about-sub-category {
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.about-app-infos {
+    min-height: fit-content;
+    max-height: 100%;
+    margin-bottom: 20px;
+}
+
+.about-app-name {
+    height: fit-content;
+    font-size: 32px;
+    font-family: 'Roboto-Bold';
+}
+
+.about-app-version {
+    height: fit-content;
+    font-size: 25px;
+    font-family: 'Roboto-Bold-Italic';
+}
+
+.about-credits-label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Roboto-Medium';
+}
+
+.about-credits {
+    min-height: 0%;
+    max-height: 100%;
+    font-size: 16px;
+    font-size: 100%;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    padding-bottom: 30px;
+}
+
+.about-credit {
+    margin-bottom: 10px;
+}
+
+/* ---------------------------------------------------------------- */
+
+.warning-part {
+    min-height: fit-content;
+    max-height: fit-content;
+    min-width: 50%;
+    width: 95%;
+    background-color: var(--gray-80);
+    border: 5px solid var(--lazr-red);
+    border-radius: 10px;
+    padding-bottom: 10px;
+    margin: 10px 0 0 0;
+}
+
+.about-warning {
+    height: fit-content;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 130%;
+    font-family: 'Roboto-Bold';
+    padding: 0 0 10px 0;
+    color: var(--lazr-red);
+}
+
+.about-warning > div {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--lazr-red);
+    padding: .5%;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 0 5%;
+}
+
+.about-warning > div > img {
+    width: 100%;
+}
+
+.about-warning-text {
+    height: fit-content;
+    justify-content: flex-start;
+    font-size: 90%;
+    font-family: 'Roboto-Medium';
+    color: var(--gray-10);
+    text-align: start;
+}
+
+/* ---------------------------------------------------------------- */
+
+.lazr-part {
+    height: fit-content;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.lazr-card {
+    height: 150px;
+    min-width: 30%;
+    font-family: 'Roboto-Medium';
+    color: var(--gray-30);
+}
+
+.lazr-logo {
+    height: 50%;
+}
+
+.links-card {
+    height: 150px;
+    min-width: 50%;
+}
+
+.about-link {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 30%;
+    background-color: #ffffff;
+    box-shadow: #00000025 0 5px 20px;
+    font-size: 16px;
+    font-family: Roboto-Bold;
+    color: var(--gray-70);
+    border-radius: var(--button-border-radius);
+}
+
+.github-logo {
+    box-sizing: border-box;
+    height: 100%;
+    opacity: 70%;
+}

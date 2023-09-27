@@ -1,0 +1,62 @@
+/* Put here any 'footer' specific css */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--footer-height);
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary);
+    color: var(--font-color-footer);
+}
+
+.footer__navigation-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+}
+
+.navigation-button__icon {
+    height: 35%;
+    transition: opacity linear .3s;
+}
+
+.unselected {
+    opacity: .25;
+    transition: opacity linear .3s;
+}
+/* ==========================
+ MEDIA QUERIES
+========================== */
+
+/* Tablets ----------- */
+@media (min-width : 767px) and (max-width : 1279px) {
+    :root {
+        --footer-height: var(--tablet-footer-height);
+    }
+}
+
+/* Laptops ----------- */
+@media (min-width: 1280px) and (max-width: 1919px) {
+    :root {
+        --footer-height: var(--laptop-footer-height);
+    }
+    footer {
+        justify-content: flex-start;
+        font-size: 14px;
+    }
+}
+
+/* Desktops ----------- */
+@media (min-width: 1920px) {
+    :root {
+        --footer-height: var(--desktop-footer-height);
+    }
+    footer {
+        justify-content: flex-start;
+    }
+}

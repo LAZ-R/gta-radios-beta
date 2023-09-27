@@ -1,0 +1,38 @@
+/* Put here any 'settings.html' specific css */
+
+.settings-group {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: fit-content;
+    font-size: 18px;
+    border-bottom: 2px solid var(--gray-20);
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
+.settings-group:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+.settings-group-name {
+    font-family: 'Roboto-Bold';
+    padding: 0 var(--horizontal-padding);
+    margin-bottom: 8px;
+}
+.setting-tile {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding: 18px var(--horizontal-padding);
+    border-bottom: 1px solid var(--gray-10);
+    font-family: 'Roboto-Medium';
+}
+.setting-tile:last-child {
+    border-bottom: none;
+}

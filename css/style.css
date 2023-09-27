@@ -1,0 +1,205 @@
+@import url("./variables.css");
+@import url("./fonts.css");
+@import url("../js/layout/pages/pages.css");
+@import url("../js/components/components.css");
+
+span {
+    user-select: none;
+}
+
+/* ==========================
+ MAIN CONTAINERS
+========================== */
+
+html,
+body {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 100vh; /* fallback for Js load */
+    height: var(--doc-height);
+    background-color: var(--html-background-color);
+    /* font-family: 'Roboto-Regular'; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+main, .pseudo-main {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: var(--main-height);
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    color: var(--font-color-default);
+    transition: opacity .2s linear;
+}
+
+.layout-spacer {
+    background-color: aqua;
+    display: flex;
+    flex-grow: 1;
+    min-width: 100%;
+}
+
+/* ==========================
+ CLICKABLES
+========================== */
+
+/* Anchors */
+a {
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: var(--font-color-links);
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a:focus {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+/* Buttons */
+button {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    display: flex;
+    font-family: Inter;
+    border: 1px solid var(--gray-10);
+    border-radius: var(--button-border-radius);
+    background-color: var(--gray-10);
+    padding: 2% 5% 2% 5%;
+    margin: 0;
+    font-size: var(--button-font-size);
+    flex-wrap: wrap;
+    color: var(--gray-80);
+}
+
+    button:hover {
+        cursor: pointer;
+        background-color: var(--gray-20);
+    }
+
+    button:focus {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+.primary-button {
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
+    .primary-button:hover {
+        background-color: var(--primary-hover);
+    }
+
+.secondary-button {
+    background-color: var(--on-primary);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+    .secondary-button:hover {
+        border: 1px solid var(--primary-hover);
+        background-color: var(--gray-10);
+        color: var(--primary-hover);
+    }
+
+.warning-button {
+    background-color: var(--lazr-red);
+    border: 1px solid var(--lazr-red);
+    color: var(--on-primary);
+}
+
+    .warning-button:hover {
+        border: 1px solid var(--lazr-red);
+        background-color: var(--gray-10);
+        color: var(--lazr-red);
+    }
+
+/* Switch */
+/* The switch - the box around the slider */
+.switch {
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+  /* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--gray-20);
+    -webkit-transition: .3s;
+    transition: .3s ease-out;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .3s;
+    transition: .3s ease-out;
+}
+  
+input:checked + .slider {
+    background-color: var(--primary);
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* ==========================
+ MEDIA QUERIES
+========================== */
+
+/* Tablets ----------- */
+@media (min-width : 767px) and (max-width : 1279px) {
+    
+}
+
+/* Laptops ----------- */
+@media (min-width: 1280px) and (max-width: 1919px) {
+    
+}
+
+/* Desktops ----------- */
+@media (min-width: 1920px) {
+    
+}

@@ -1,0 +1,66 @@
+/* Put here any 'index.html' specific css */
+
+.radio-button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 0;
+    padding: 20px var(--phone-horizontal-padding);
+    background-color: #000000;
+    border: none;
+    border-bottom: 1px solid #c6c6c65d;
+    flex-wrap: nowrap;
+    color: #ffffff;
+}
+.radio-button:hover {
+    background-color: #000000;
+}
+.radio-button:last-of-type {
+    border-bottom: none;
+}
+
+.radio-icon-small {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    background-color: #000000;
+    border-radius: 50%;
+    margin-right: var(--phone-horizontal-padding);
+}
+
+.radio-icon-img-small {
+    width: 60px;
+    height: 60px;
+}
+
+.radio-infos {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 0;
+    padding: 10px 0;
+    background-color: #000000;
+    border: none;
+    text-align: start;
+    font-size: 15px;
+}
+
+.radio-name {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.radio-genre {
+    font-weight: 300;
+}

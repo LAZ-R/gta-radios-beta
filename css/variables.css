@@ -1,0 +1,127 @@
+:root {
+    /* ========================================================================
+     COLORS
+    ======================================================================== */
+
+    /* Gray */
+    --gray-90: #191919;
+    --gray-80: #333333;
+    --gray-70: #4d4d4d;
+    --gray-60: #666666;
+    --gray-50: #808080;
+    --gray-40: #999999;
+    --gray-30: #b3b3b3;
+    --gray-20: #cccccc;
+    --gray-10: #e6e6e6;
+
+    /* Primary */
+    --primary: #3a386e;
+    --primary-hover: #0071bd;
+
+    --on-primary : #ffffff;
+
+    /* Accent */
+    --accent: #a441bd;
+    --accent-hover: #973dad;
+
+    /* Constant colors */
+    --lazr-red: #b85858;
+    --html-background-color: #000000;
+    
+    /* Font colors */
+    --font-color-default: var(--gray-60);
+
+    --font-color-links: var(--gray-60);
+
+    --font-color-header: var(--on-primary);
+    --font-color-header-hover: var(--on-primary);
+    --font-color-header-focus: var(--on-primary);
+
+    --font-color-footer: var(--on-primary);
+
+    /* ========================================================================
+     SIZES
+    ======================================================================== */
+
+    /* HEIGHTS ************************************************************* */
+
+    --doc-height: 100%;
+
+    /* header height ------------------------------------------------------- */
+    --phone-header-height: 10%;
+    --tablet-header-height: 10%;
+    --laptop-header-height: 7%;
+    --desktop-header-height: 7%;
+    /* --------------------------------------------------------------------- */
+    --header-height: var(--phone-header-height);
+    /* --------------------------------------------------------------------- */
+
+    /* main height */
+    --phone-main-height: 90%;
+    --tablet-main-height: 90%;
+    --laptop-main-height: 90%;
+    --desktop-main-height: 90%;
+    /* --------------------------------------------------------------------- */
+    --main-height: var(--phone-main-height);
+    /* --------------------------------------------------------------------- */
+
+    /* footer height */
+    --phone-footer-height: 0%;
+    --tablet-footer-height: 0%;
+    --laptop-footer-height: 3%;
+    --desktop-footer-height: 3%;
+    /* --------------------------------------------------------------------- */
+    --footer-height: var(--phone-footer-height);
+    /* --------------------------------------------------------------------- */
+
+    /* PADDINGS ************************************************************ */
+
+    /* Horizontal Padding -------------------------------------------------- */
+    --phone-horizontal-padding: 5%;
+    --tablet-horizontal-padding: 7%;
+    --laptop-horizontal-padding: 10%;
+    --desktop-horizontal-padding: 16%;
+    /* --------------------------------------------------------------------- */
+    --horizontal-padding : var(--phone-horizontal-padding);
+    /* --------------------------------------------------------------------- */
+
+    
+    --button-border-radius: 5px;
+
+    /* Button font size */
+    --phone-button-font-size: 18px;
+    --tablet-button-font-size: 16px;
+    --laptop-button-font-size: 15px;
+    --desktop-button-font-size: 14px;
+    /* --------------------------------------------------------------------- */
+    --button-font-size: var(--phone-button-font-size);
+    /* --------------------------------------------------------------------- */
+}
+
+/* ==========================
+ MEDIA QUERIES
+========================== */
+
+/* Tablets ----------- */
+@media (min-width : 767px) and (max-width : 1279px) {
+    :root {
+        --horizontal-padding : var(--tablet-horizontal-padding);
+        --main-height: var(--tablet-main-height);
+    }
+}
+
+/* Laptops ----------- */
+@media (min-width: 1280px) and (max-width: 1919px) {
+    :root {
+        --horizontal-padding : var(--laptop-horizontal-padding);
+        --main-height: var(--laptop-main-height);
+    }
+}
+
+/* Desktops ----------- */
+@media (min-width: 1920px) {
+    :root {
+        --horizontal-padding : var(--desktop-horizontal-padding);
+        --main-height: var(--desktop-main-height);
+    }
+}

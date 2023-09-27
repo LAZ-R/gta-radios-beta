@@ -1,0 +1,40 @@
+/* Put here any 'index.html' specific css */
+
+.header-border {
+    box-sizing: border-box;
+    position: fixed;
+    top: var(--header-height);
+    display: flex;
+    min-height: 5px;
+    width: 100%;
+    background: linear-gradient(45deg, rgba(97,239,206,1) 0%, rgba(255,147,255,1) 100%);
+}
+
+.games-area {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding-top: 50px;
+}
+
+.game-button {
+    box-sizing: border-box;
+    display: flex;
+    background-position: center;
+    background-size: contain;
+    width: 250px;
+    height: 250px;
+    padding: 0;
+    margin-bottom: 40px;
+    border-radius: 50%;
+    border: none;
+}
+
+.inactive-button {
+    filter: grayscale(100%);
+    opacity: .5;
+}
