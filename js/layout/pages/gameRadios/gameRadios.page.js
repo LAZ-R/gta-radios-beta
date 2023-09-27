@@ -53,12 +53,12 @@ export const renderPage = () => {
         return display;
     }
 
-    const pageTitle = isLiked ? 'Likes' : game.name;
+    const pageTitle = isLiked ? 'Favoris' : game.name;
     LAZR.DOM.setHTMLTitle(pageTitle);
 
     const RADIOS = isLiked ? getLikedRadios() : getRadiosByGameId(gameId);
 
-    const headerTitle = LAZR.DOM.createElement('h1', 'headerTitle', 'header-title', `
+    const headerTitle = LAZR.DOM.createElement('h1', 'headerTitle', 'header-title', isLiked ? `<b>${pageTitle}</b>`  : `
         Grand Theft Auto
         <br>
         <b>${pageTitle}</b>

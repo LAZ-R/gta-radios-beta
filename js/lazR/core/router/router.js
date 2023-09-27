@@ -141,9 +141,11 @@ window.onhashchange = () => {
                                 game = getGameById(gameId);
                             }
                             pageTitle = isLiked ? 'Likes' : game.name;
-                            headerTitle = DOM.createElement('h1', 'headerTitle', 'header-title', `Grand Theft Auto
+                            headerTitle = DOM.createElement('h1', 'headerTitle', 'header-title', isLiked ? `<b>${pageTitle}</b>`  : `
+                            Grand Theft Auto
                             <br>
-                            <b>${pageTitle}</b>`);
+                            <b>${pageTitle}</b>
+                        `);
                             HEADER.edit(
                                 true, 
                                 headerTitle,

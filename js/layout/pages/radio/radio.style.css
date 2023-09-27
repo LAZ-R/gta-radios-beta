@@ -130,6 +130,10 @@
     z-index: 200;
 }
 
+.modal-sub-title {
+    font-weight: 400;
+}
+
 .playlist-table {
     box-sizing: border-box;
     display: flex;
@@ -137,6 +141,9 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+    /* background-color: #181818;
+    border-radius: 20px;
+    padding: 20px 0; */
 }
 .playlist-table-row {
     box-sizing: border-box;
@@ -147,13 +154,13 @@
     width: 100%;
     margin-bottom: 10px;
     font-size: 15px;
-    padding: 10px 0;
+    padding: 10px;
     border-radius: 10px;
     transition: background-color .3s linear, border .3s linear;
     border: 1px solid transparent;
 }
 .playlist-table-row:last-of-type {
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .playlist-table-name-div {

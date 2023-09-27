@@ -74,8 +74,6 @@ const animateBackground = (game, isFirstTime, oldRnd) => {
     }
     isLooping = true;
 
-    console.log('isAnimating')
-
     // Code
     const body = document.getElementById('body');
     if (isFirstTime) {
@@ -293,6 +291,8 @@ const onPlaylistModalClick = (radioColor) => {
                 <div class="modal-div">
                     <div class="modal-inner-div">
                         <span class="modal-title">${currentRadio.name}</span>
+                        <!-- <span class="modal-sub-title">Animée par</span> -->
+                        <span class="modal-sub-title" style="font-weight: 100;margin-bottom: 20px">${currentRadio.host}</span>
                         ${getPlaylistElement()}
                     </div>
                 </div>

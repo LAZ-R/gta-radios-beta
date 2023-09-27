@@ -1,7 +1,7 @@
 import { DEFAULT_SETTINGS } from "../../../app-default-settings.js";
 
 const STORAGE = localStorage;
-const appShortName = `gtaradiosbeta3`;
+const appShortName = `gtaradiosbeta004`;
 
 if (STORAGE.getItem(`${appShortName}FirstTime`) === null) {
     STORAGE.setItem(`${appShortName}FirstTime`, '0');
