@@ -261,10 +261,12 @@ const playPause = () => {
     const playPauseIcon = document.getElementById('playPauseIcon');
     if (music.paused) {
         playPauseIcon.setAttribute('src', './medias/images/font-awsome/circle-pause-solid.svg');
+        playPauseIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue(currentRadio.color)}`);
         music.play();
     } else {
+        playPauseIcon.setAttribute('src', './medias/images/font-awsome/circle-play-regular.svg');
+        playPauseIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue('#878787')}`);
         music.pause();
-        playPauseIcon.setAttribute('src', './medias/images/font-awsome/circle-play-solid.svg');
     }
 }
 window.playPause = playPause;
@@ -365,7 +367,9 @@ const getPlaylistElement = () => {
 const showLoader = () => {
     const body = document.getElementById('body');
     const loaderContainer = LAZR.DOM.createElement('div', 'loaderContainer', 'loader-container', `
-    <span class="loader"></span>
+        <div class="loader-sub-container">
+            <span class="loader"></span>
+        </div>
     `);
     body.appendChild(loaderContainer);
     let styles = window.getComputedStyle(loaderContainer,':after');
