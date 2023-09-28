@@ -55,10 +55,12 @@
 .music-name {
     font-size: 17px;
     font-weight: 600;
+    text-align: center;
     opacity: 1;
     transition: opacity .5s linear;
 }
 .music-artist {
+    text-align: center;
     opacity: 1;
     transition: opacity .5s linear;
 }
@@ -95,6 +97,7 @@
     font-size: 17px;
     font-weight: 600;
     margin-bottom: 3px;
+    text-align: center;
 }
 
 .radio-genre {
@@ -160,7 +163,7 @@
     border: 1px solid transparent;
 }
 .playlist-table-row:last-of-type {
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 
 .playlist-table-name-div {
@@ -180,3 +183,52 @@
     width: 100%;
     text-align: center;
 }
+
+.loader-container {
+    z-index: 50;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 22vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    width: 100%;
+    background-color: transparent;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite
+  }
+  .loader::before , .loader::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #FFF;
+    animation: prixClipFix 2s linear infinite ;
+  }
+  .loader::after{
+    border-color: var(--radio-color);
+    animation: prixClipFix 2s linear infinite , rotate 0.5s linear infinite reverse;
+    inset: 6px;
+  }
+
+  @keyframes rotate {
+    0%   {transform: rotate(0deg)}
+    100%   {transform: rotate(360deg)}
+  }
+
+  @keyframes prixClipFix {
+      0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+      25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+      50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+      75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+      100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+  }

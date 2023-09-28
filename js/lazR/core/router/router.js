@@ -1,6 +1,6 @@
 import * as APP_ROUTER from '../../../app-router.js';
 import * as HEADER from '../../../components/header/header.component.js';
-import { destroyModal, stopAnimateBackground, stopLoopPreventInnerClick, stopMusicInfos } from '../../../layout/pages/radio/radio.page.js';
+import { destroyModal, killLoader, stopAnimateBackground, stopLoopPreventInnerClick, stopMusicInfos } from '../../../layout/pages/radio/radio.page.js';
 import { getGameById } from '../../../services/games.service.js';
 import * as DOM from '../DOM/DOM.js'
 
@@ -119,6 +119,7 @@ window.onhashchange = () => {
                 stopMusicInfos();
                 stopLoopPreventInnerClick();
                 destroyModal();
+                killLoader();
 
                 navigateBackward(false);
                 setTimeout(() => {

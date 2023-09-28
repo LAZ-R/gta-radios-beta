@@ -8,6 +8,7 @@ export let music;
 
 let isLooping = false;
 let loopTimer;
+let loopTimerBis;
 
 let isLooping2 = false;
 let loopTimer2;
@@ -18,6 +19,7 @@ let isLooping3 = false;
 let loopTimer3;
 
 let currentRadio;
+let isMusicLoaded = false;
 
 const setLiked = (radioId) => {
     if (!isRadioLiked(radioId)) {
@@ -67,21 +69,15 @@ const getPlaylistModalButtonIcon = () => {
 // BACKGROUND ANIMATION -------------------------------------------------------
 
 const animateBackground = (game, isFirstTime, oldRnd) => {
-
     // Vérifie si la boucle est déjà en cours d'exécution
     if (isLooping) {
         return;
     }
     isLooping = true;
-
+    
     // Code
-    const body = document.getElementById('body');
-    if (isFirstTime) {
-        body.style.backgroundPosition = 'left top';
-        body.style.transition = 'background-position 30s linear, background-image 1s linear';
-        body.style.backgroundRepeat = 'no-repeat';
-        body.style.backgroundSize = '85vh';
-    }
+    let isStillFirstTime = false;
+    let loopingTime = 30000;
     const max = game.backgrounds.length - 1;
     let rnd = LAZR.MATHS.getRandomIntegerBetween(0, max);
 
@@ -91,106 +87,137 @@ const animateBackground = (game, isFirstTime, oldRnd) => {
         }
     }
 
-    setTimeout(() => {
-        body.style.backgroundImage = `url(./medias/images/backgrounds/${game.backgrounds[rnd]}.webp)`;
-    }, isFirstTime ? 500 : 0);
-    
-    if (body.style.backgroundPosition == 'left top') {
-        body.style.backgroundPosition = 'right top';
+    if (isMusicLoaded) {
+        const body = document.getElementById('body');
+        if (isFirstTime) {
+            body.style.backgroundPosition = 'left top';
+            body.style.backgroundImage = `url(./medias/images/backgrounds/blank.png)`;
+            body.style.transition = 'background-position 30s linear, background-image .5s linear';
+            body.style.backgroundRepeat = 'no-repeat';
+            body.style.backgroundSize = '85vh';
+        }
+
+        setTimeout(() => {
+            body.style.backgroundImage = `url(./medias/images/backgrounds/${game.backgrounds[rnd]}.webp)`;
+        }, isFirstTime ? 500 : 0);
+
+        if (body.style.backgroundPosition == 'left top') {
+            body.style.backgroundPosition = 'right top';
+        } else {
+            body.style.backgroundPosition = 'left top';
+        }
+
+        loopTimerBis = setTimeout(() => {
+            body.style.backgroundImage = `url(./medias/images/backgrounds/blank.png)`;
+        }, 29500);
     } else {
-        body.style.backgroundPosition = 'left top';
+        isStillFirstTime = true;
+        loopingTime = 50;
     }
 
     // Boucle
     loopTimer = setTimeout(() => {
         isLooping = false;
-        animateBackground(game, false, rnd);
-    }, 30000);
+        animateBackground(game, isStillFirstTime, rnd);
+    }, loopingTime);
+}
+
+// Pour annuler la boucle de l'extérieur
+export function stopAnimateBackgroundBis() {
+    clearTimeout(loopTimerBis); // Annule le timer
 }
 
 // Pour annuler la boucle de l'extérieur
 export function stopAnimateBackground() {
     if (isLooping) {
-      clearTimeout(loopTimer); // Annule le timer
-      isLooping = false;
+        stopAnimateBackgroundBis();
+        clearTimeout(loopTimer); // Annule le timer
+        isLooping = false;
     }
-  }
+}
 
 // MUSIC INFOS ----------------------------------------------------------------
 
-const setMusicInfos = (radio, isFirstTime, oldMusic) => {
+const setMusicInfos = (radio, isFirstTime) => {
     // Vérifie si la boucle est déjà en cours d'exécution
     if (isLooping2) {
         return;
     }
     isLooping2 = true;
 
-    // Code
-    if (radio.playlist != undefined) {
-        let time = Math.round(music.currentTime);
-        let newMusicName;
-        let hasMusicPlaying = false;
-        radio.playlist.forEach(musicFromPlaylist => {
-            if (time >= musicFromPlaylist.start && time < musicFromPlaylist.end) {
-                hasMusicPlaying = true;
-                newMusicName = musicFromPlaylist.name;
-                if (newMusicName != musicName) {
-                    musicName = newMusicName;
-                    musicArtist = musicFromPlaylist.artist;
+    let isStillFirstTime = false;
+    let loopTime = 1000;
+
+    if (isMusicLoaded) {
+        // Code
+        if (radio.playlist != undefined) {
+            let time = Math.round(music.currentTime);
+            let newMusicName;
+            let hasMusicPlaying = false;
+            radio.playlist.forEach(musicFromPlaylist => {
+                if (time >= musicFromPlaylist.start && time < musicFromPlaylist.end) {
+                    hasMusicPlaying = true;
+                    newMusicName = musicFromPlaylist.name;
+                    if (newMusicName != musicName) {
+                        musicName = newMusicName;
+                        musicArtist = musicFromPlaylist.artist;
+                    }
                 }
-            }
-        });
-    
-        const musicNameContainer = document.getElementById('musicName');
-        const musicArtistContainer = document.getElementById('musicArtist');
-    
-        if (musicNameContainer != null && musicArtistContainer != null) {
-            if (hasMusicPlaying) {
-                // Gestion playlist
-                const rowElement = document.getElementById('music-row-' + cleanString(musicName));
-                if (rowElement != undefined) {
-                    rowElement.style.border = `1px solid ${radio.color}`;
-                    rowElement.style.backgroundColor = "#2b2b2b"
+            });
+        
+            const musicNameContainer = document.getElementById('musicName');
+            const musicArtistContainer = document.getElementById('musicArtist');
+        
+            if (musicNameContainer != null && musicArtistContainer != null) {
+                if (hasMusicPlaying) {
+                    // Gestion playlist
+                    const rowElement = document.getElementById('music-row-' + cleanString(musicName));
+                    if (rowElement != undefined) {
+                        rowElement.style.border = `1px solid ${radio.color}`;
+                        rowElement.style.backgroundColor = "#2b2b2b"
+                    }
+                    
+                    if (musicName != musicNameContainer.innerHTML && musicArtist != musicArtistContainer.innerHTML) {
+                        musicNameContainer.innerHTML = musicName;
+                        musicArtistContainer.innerHTML = musicArtist;
+
+                        setTimeout(() => {
+                            musicNameContainer.style.opacity = 1;
+                            musicArtistContainer.style.opacity = 1;
+                        }, 500);
+                    }
                 }
-                
-                if (musicName != musicNameContainer.innerHTML && musicArtist != musicArtistContainer.innerHTML) {
-                    musicNameContainer.innerHTML = musicName;
-                    musicArtistContainer.innerHTML = musicArtist;
+                if (!hasMusicPlaying) {
+                    musicNameContainer.style.opacity = 0;
+                    musicArtistContainer.style.opacity = 0;
+
+                    // Gestion playlist 
+
+                    const rows = document.getElementsByClassName('playlist-table-row');
+                    if (rows !== undefined) {
+                        for (let i = 0; i < rows.length; i++) {
+                            rows.item(i).style.border = '1px solid transparent';
+                            rows.item(i).style.backgroundColor = "transparent";
+                        };
+                    }
 
                     setTimeout(() => {
-                        musicNameContainer.style.opacity = 1;
-                        musicArtistContainer.style.opacity = 1;
+                        musicNameContainer.innerHTML = '';
+                        musicArtistContainer.innerHTML = '';
                     }, 500);
-                    
                 }
-            }
-            if (!hasMusicPlaying) {
-                musicNameContainer.style.opacity = 0;
-                musicArtistContainer.style.opacity = 0;
-
-                // Gestion playlist 
-
-                const rows = document.getElementsByClassName('playlist-table-row');
-                if (rows !== undefined) {
-                    for (let i = 0; i < rows.length; i++) {
-                        rows.item(i).style.border = '1px solid transparent';
-                        rows.item(i).style.backgroundColor = "transparent";
-                    };
-                }
-
-                setTimeout(() => {
-                    musicNameContainer.innerHTML = '';
-                    musicArtistContainer.innerHTML = '';
-                }, 500);
             }
         }
+    } else {
+        isStillFirstTime = true;
+        loopTime = 50;
     }
 
     // Boucle
     loopTimer2 = setTimeout(() => {
         isLooping2 = false;
-        setMusicInfos(radio, false, musicName);
-    }, 1000);
+        setMusicInfos(radio, isStillFirstTime, musicName);
+    }, loopTime);
 }
 
 // Pour annuler la boucle de l'extérieur
@@ -212,7 +239,6 @@ const loopPreventInnerClick = () => {
 
     // Code
     window.innerDocClick = false;
-    
 
     // Boucle
     loopTimer3 = setTimeout(() => {
@@ -276,15 +302,11 @@ window.destroyModal = destroyModal;
 const onPlaylistModalClick = (radioColor) => {
     if (currentRadio.playlist != undefined) {
         const playlistModalIcon = document.getElementById('playlistModalIcon');
-        const playlistModalButton = document.getElementById('playlistModalButton');
 
         if (playlistModalIcon.getAttribute('alt') == 'unopened-playlist') {
             playlistModalIcon.setAttribute('src', './medias/images/font-awsome/rectangle-list-solid.svg');
             playlistModalIcon.setAttribute('alt', 'opened-playlist');
             playlistModalIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue(radioColor)}`);
-
-            playlistModalButton.style.zIndex = '100';
-
 
             const body = document.getElementById('body');
             const modalBackground = LAZR.DOM.createElement('div', 'modalBackground', 'modal-background', `
@@ -305,9 +327,6 @@ const onPlaylistModalClick = (radioColor) => {
             playlistModalIcon.setAttribute('src', './medias/images/font-awsome/rectangle-list-regular.svg');
             playlistModalIcon.setAttribute('alt', 'unopened-playlist');
             playlistModalIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue('#878787')}`);
-
-            playlistModalButton.style.zIndex = 'auto';
-            // ajouter l'ajout
         }
     }
 }
@@ -343,6 +362,22 @@ const getPlaylistElement = () => {
     return string;
 }
 
+const showLoader = () => {
+    const body = document.getElementById('body');
+    const loaderContainer = LAZR.DOM.createElement('div', 'loaderContainer', 'loader-container', `
+    <span class="loader"></span>
+    `);
+    body.appendChild(loaderContainer);
+    let styles = window.getComputedStyle(loaderContainer,':after');
+    console.log(styles);
+}
+export const killLoader = () => {
+    const loaderContainer = document.getElementById('loaderContainer');
+    if (loaderContainer != null && loaderContainer != undefined) {
+        loaderContainer.remove();
+    }
+}
+
 // RENDERING ------------------------------------------------------------------
 
 export const renderPage = () => {
@@ -373,6 +408,7 @@ export const renderPage = () => {
     }
     const radio = getRadioById(radioId);
     currentRadio = radio;
+    document.documentElement.style.setProperty('--radio-color', radio.color);
 
     const pageTitle = radio.name;
     LAZR.DOM.setHTMLTitle(pageTitle);
@@ -382,7 +418,7 @@ export const renderPage = () => {
         const match = music.src.match(pattern);
         const result = match[1];
         if (result != radio.file) {
-            music.pause();
+            music.pause(); // stoppe l'ancienne musique
         } else {
             shouldGenerateNewMusic = false;
         }
@@ -417,6 +453,7 @@ export const renderPage = () => {
     `);
 
     if (shouldGenerateNewMusic) {
+        showLoader();
         music = new Audio(`./medias/audio/radios/${radio.file}.mp3`);
         music.loop = true;
         let min = 100;
@@ -427,7 +464,11 @@ export const renderPage = () => {
         }
         let startTime = LAZR.MATHS.getRandomIntegerBetween(min, max);
         music.currentTime = startTime;
-        music.play();
+        music.addEventListener("canplaythrough", (event) => {
+            isMusicLoaded = true;
+            killLoader();
+            music.play();
+          });
     }
 
     animateBackground(game, true);
@@ -437,7 +478,6 @@ export const renderPage = () => {
     page.style.background = '';
     document.getElementById('header').style.backdropFilter = 'blur(3px) grayscale(100%) brightness(50%)';
     page.style.backdropFilter = 'blur(3px) grayscale(100%) brightness(50%)';
-    //page.style.padding = '0 var(--horizontal-padding)';
     return page;
 }
 
