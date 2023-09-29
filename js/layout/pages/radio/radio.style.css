@@ -53,6 +53,11 @@
 }
 
 .music-name {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 0 var(--horizontal-padding);
     font-size: 17px;
     font-weight: 600;
     text-align: center;
@@ -60,6 +65,11 @@
     transition: opacity .5s linear;
 }
 .music-artist {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 0 var(--horizontal-padding);
     text-align: center;
     opacity: 1;
     transition: opacity .5s linear;
