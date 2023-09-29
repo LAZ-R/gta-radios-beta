@@ -108,64 +108,69 @@ window.onhashchange = () => {
                 // BACK TO ANOTHER PAGE
                 //console.log('back to another page')
                 let pageArray = window.location.hash.match(getPageRegex);
-                const page = pageArray[0];
-                const body = document.getElementById('body');
-                body.style.backgroundPosition = 'left top';
-                body.style.transition = 'none';
-                body.style.backgroundRepeat = 'no-repeat';
-                body.style.backgroundSize = '0vh';
-                body.style.backgroundImage = `none`;
-                stopAnimateBackground();
-                stopMusicInfos();
-                stopLoopPreventInnerClick();
-                destroyModal();
-                killLoader();
-
-                navigateBackward(false);
-                setTimeout(() => {
-                    let pageTitle;
-                    let headerTitle;
-
-                    switch (page) {
-                        case 'gameRadios':
-                            const getIdRegex = /(?<=gameId=)\w+/g;
-                            let array = window.location.hash.match(getIdRegex);
-                            let gameId = '';
-                            if (array != null) {
-                                gameId = array[0];
-                            }
-                            let isLiked = false;
-                            let game;
-                            if (gameId == 'liked') {
-                                isLiked = true;
-                            } else {
-                                game = getGameById(gameId);
-                            }
-                            pageTitle = isLiked ? 'Likes' : game.name;
-                            headerTitle = DOM.createElement('h1', 'headerTitle', 'header-title', isLiked ? `<b>${pageTitle}</b>`  : `
-                            Grand Theft Auto
-                            <br>
-                            <b>${pageTitle}</b>
-                        `);
-                            HEADER.edit(
-                                true, 
-                                headerTitle,
-                                false
-                            );
-                            break;
-                        case 'settings':
-                            pageTitle = 'Paramètres';
-                            headerTitle = DOM.createElement('h1', 'headerTitle', 'header-title', pageTitle);
-                            HEADER.edit(
-                                false, 
-                                headerTitle, 
-                                true
-                            );
-                            break;
-                        default:
-                            break;
-                    }
-                }, 200);
+                if (pageArray == null) {
+                    console.log('#undefined');
+                } else {
+                    const page = pageArray[0];
+                    const body = document.getElementById('body');
+                    body.style.backgroundPosition = 'left top';
+                    body.style.transition = 'none';
+                    body.style.backgroundRepeat = 'no-repeat';
+                    body.style.backgroundSize = '0vh';
+                    body.style.backgroundImage = `none`;
+                    stopAnimateBackground();
+                    stopMusicInfos();
+                    stopLoopPreventInnerClick();
+                    destroyModal();
+                    killLoader();
+    
+                    navigateBackward(false);
+                    setTimeout(() => {
+                        let pageTitle;
+                        let headerTitle;
+    
+                        switch (page) {
+                            case 'gameRadios':
+                                const getIdRegex = /(?<=gameId=)\w+/g;
+                                let array = window.location.hash.match(getIdRegex);
+                                let gameId = '';
+                                if (array != null) {
+                                    gameId = array[0];
+                                }
+                                let isLiked = false;
+                                let game;
+                                if (gameId == 'liked') {
+                                    isLiked = true;
+                                } else {
+                                    game = getGameById(gameId);
+                                }
+                                pageTitle = isLiked ? 'Likes' : game.name;
+                                headerTitle = DOM.createElement('h1', 'headerTitle', 'header-title', isLiked ? `<b>${pageTitle}</b>`  : `
+                                Grand Theft Auto
+                                <br>
+                                <b>${pageTitle}</b>
+                            `);
+                                HEADER.edit(
+                                    true, 
+                                    headerTitle,
+                                    false
+                                );
+                                break;
+                            case 'settings':
+                                pageTitle = 'Paramètres';
+                                headerTitle = DOM.createElement('h1', 'headerTitle', 'header-title', pageTitle);
+                                HEADER.edit(
+                                    false, 
+                                    headerTitle, 
+                                    true
+                                );
+                                break;
+                            default:
+                                break;
+                        }
+                    }, 200);
+                }
+                
             }
         }
         historyArray.pop();

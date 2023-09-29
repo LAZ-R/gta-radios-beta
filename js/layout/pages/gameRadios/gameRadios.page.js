@@ -2,6 +2,7 @@ import * as LAZR from '../../../lazR/lazR.js';
 import * as HEADER from '../../../components/header/header.component.js';
 import { getGameById } from '../../../services/games.service.js';
 import { getLikedRadios, getRadiosByGameId } from '../../../services/radios.service.js';
+import { cleanString } from '../radio/radio.page.js';
 
 const navigateTo = (URL) => {
     LAZR.ROUTER.navigateTo(URL);
@@ -25,7 +26,10 @@ export const renderPage = () => {
 
     const getRadioIcon = (radio) => {
         return `
-            <div class="radio-icon-small" style="border: 3px solid ${radio.color}">
+            <div
+                id="button-icon-${cleanString(radio.name)}" 
+                class="radio-icon-small" 
+                style="border: 3px solid ${radio.color}">
                 <img src="./medias/images/radio-icons/${radio.icon}.webp" class="radio-icon-img-small" />
             </div>
         `;
@@ -33,7 +37,7 @@ export const renderPage = () => {
     
     const getRadioButton = (radio) => {
         return `
-            <button *
+            <button
                 class="radio-button"
                 onclick="navigateTo('./?page=radio&gameId=${radio.game_id}&radioId=${radio.id}')">
                 ${getRadioIcon(radio)}

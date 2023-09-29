@@ -2,6 +2,7 @@
 
 .radio-button {
     box-sizing: border-box;
+    position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -25,6 +26,7 @@
 
 .radio-icon-small {
     box-sizing: border-box;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,4 +65,85 @@
 
 .radio-genre {
     font-weight: 300;
+}
+
+.button-icon-animation-area {
+    box-sizing: border-box;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 90%;
+    background-color: #000000c0;
+    border-radius: 50%;
+}
+
+.animatedLines {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.animatedLines .lines {
+    box-sizing: border-box;
+    display: flex;
+    width: 3px;
+    height: 7px;
+    margin-right: 4px;
+}
+
+.animatedLines .lines:nth-child(1) {
+    background-color: #ffffff48;
+    animation: animatedBarsSmall .5s .4s infinite alternate;
+}
+.animatedLines .lines:nth-child(2) {
+    background-color: #ffffff8e;
+    animation: animatedBarsMedium .5s .3s infinite alternate;
+}
+.animatedLines .lines:nth-child(3) {
+    background-color: #ffffffd0;
+    animation: animatedBarsMedium .5s .2s infinite alternate;
+}
+.animatedLines .lines:nth-child(4) {
+    background-color: #ffffff;
+    animation: animatedBarsBig .5s .1s infinite alternate;
+}
+.animatedLines .lines:nth-child(5) {
+    background-color: #ffffffd0;
+    animation: animatedBarsMedium .5s .2s infinite alternate;
+}
+.animatedLines .lines:nth-child(6) {
+    background-color: #ffffff8e;
+    animation: animatedBarsMedium .5s .3s infinite alternate;
+}
+.animatedLines .lines:nth-child(7) {
+    background-color: #ffffff48;
+    animation: animatedBarsSmall .5s .4s infinite alternate;
+    margin-right: 0 !important;
+}
+
+
+@keyframes animatedBarsBig {
+    0% { transform: scaleY(1); }
+    25% { transform: scaleY(6); }
+    50% { transform: scaleY(6); }
+    100% { transform: scaleY(1); }
+}
+
+@keyframes animatedBarsMedium {
+    0% { transform: scaleY(1); }
+    25% { transform: scaleY(4); }
+    50% { transform: scaleY(4); }
+    100% { transform: scaleY(1); }
+}
+
+@keyframes animatedBarsSmall {
+    0% { transform: scaleY(1); }
+    25% { transform: scaleY(2); }
+    50% { transform: scaleY(2); }
+    100% { transform: scaleY(1); }
 }

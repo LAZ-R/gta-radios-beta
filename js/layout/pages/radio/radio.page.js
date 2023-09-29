@@ -18,8 +18,13 @@ let musicArtist;
 let isLooping3 = false;
 let loopTimer3;
 
+let isLooping4 = false;
+let loopTimer4;
+
 let currentRadio;
 let isMusicLoaded = false;
+
+let shouldGenerateNewMusic = true;
 
 const setLiked = (radioId) => {
     if (!isRadioLiked(radioId)) {
@@ -48,7 +53,9 @@ const isRadioLiked = (radioId) => {
 }
 
 const getPlayPauseButtonIcon = (radio) => {
-    return `<img id="playPauseIcon" class="play-pause-icon" src="./medias/images/font-awsome/circle-pause-solid.svg" alt="test" style="filter: ${FILTER.getFilterStringForHexValue(radio.color)}">`
+    return shouldGenerateNewMusic 
+        ? `<img id="playPauseIcon" class="play-pause-icon" src="./medias/images/font-awsome/circle-play-regular.svg" alt="test" style="filter: ${FILTER.getFilterStringForHexValue('#878787')}">` 
+        : `<img id="playPauseIcon" class="play-pause-icon" src="./medias/images/font-awsome/circle-pause-solid.svg" alt="test" style="filter: ${FILTER.getFilterStringForHexValue(radio.color)}">`
 }
 
 const getLikeButtonIcon = (radio) => {
@@ -146,7 +153,7 @@ const setMusicInfos = (radio, isFirstTime) => {
     isLooping2 = true;
 
     let isStillFirstTime = false;
-    let loopTime = 1000;
+    let loopTime = 100;
 
     if (isMusicLoaded) {
         // Code
@@ -263,10 +270,12 @@ const playPause = () => {
         playPauseIcon.setAttribute('src', './medias/images/font-awsome/circle-pause-solid.svg');
         playPauseIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue(currentRadio.color)}`);
         music.play();
+        animateListItem(currentRadio);
     } else {
         playPauseIcon.setAttribute('src', './medias/images/font-awsome/circle-play-regular.svg');
         playPauseIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue('#878787')}`);
         music.pause();
+        killAnimateListItem(currentRadio);
     }
 }
 window.playPause = playPause;
@@ -293,7 +302,10 @@ window.onLikeClick = onLikeClick;
 export const destroyModal = (isFromModalItself) => {
     const modalBackground = document.getElementById('modalBackground');
     if (modalBackground != null && modalBackground != undefined) {
-        modalBackground.remove();
+        modalBackground.style.opacity = 0;
+        setTimeout(() => {
+            modalBackground.remove();
+        }, 200);
     }
     if (isFromModalItself) {
         onPlaylistModalClick();
@@ -312,7 +324,7 @@ const onPlaylistModalClick = (radioColor) => {
 
             const body = document.getElementById('body');
             const modalBackground = LAZR.DOM.createElement('div', 'modalBackground', 'modal-background', `
-                <div class="modal-div">
+                <div class="modal-div" id="modalDiv">
                     <div class="modal-inner-div">
                         <span class="modal-title">${currentRadio.name}</span>
                         <!-- <span class="modal-sub-title">Animée par</span> -->
@@ -325,6 +337,16 @@ const onPlaylistModalClick = (radioColor) => {
                 destroyModal(true);
             })
             body.appendChild(modalBackground);
+            setTimeout(() => {
+                let modalBg = document.getElementById('modalBackground');
+                if (modalBg != null && modalBg != undefined) {
+                    modalBg.style.opacity = 1;
+                    setTimeout(() => {
+                        const modalDiv = document.getElementById('modalDiv');
+                        modalDiv.style.opacity = 1;
+                    }, 200);
+                }
+            }, 10);
         } else {
             playlistModalIcon.setAttribute('src', './medias/images/font-awsome/rectangle-list-regular.svg');
             playlistModalIcon.setAttribute('alt', 'unopened-playlist');
@@ -334,7 +356,7 @@ const onPlaylistModalClick = (radioColor) => {
 }
 window.onPlaylistModalClick = onPlaylistModalClick;
 
-const cleanString = (string) => {
+export const cleanString = (string) => {
     // Convertit la chaîne en minuscules
     let cleanedString = string.toLowerCase();
     // Supprime les accents
@@ -373,7 +395,6 @@ const showLoader = () => {
     `);
     body.appendChild(loaderContainer);
     let styles = window.getComputedStyle(loaderContainer,':after');
-    console.log(styles);
 }
 export const killLoader = () => {
     const loaderContainer = document.getElementById('loaderContainer');
@@ -382,11 +403,59 @@ export const killLoader = () => {
     }
 }
 
+const animateListItem = (cleanedRadioName) => {
+    // Vérifie si la boucle est déjà en cours d'exécution
+    if (isLooping4) {
+        return;
+    }
+    isLooping4 = true;
+
+    // Code
+    const buttonIcon = document.getElementById(`button-icon-${cleanedRadioName}`);
+    if (buttonIcon != null && buttonIcon != undefined) {
+        const buttonIconAnimationArea = document.getElementById('buttonIconAnimationArea');
+        if (buttonIconAnimationArea != null && buttonIconAnimationArea != undefined) {
+            // Nothing
+        } else {
+            // création
+            let newItemAnimationArea = LAZR.DOM.createElement('div', 'buttonIconAnimationArea', 'button-icon-animation-area', `
+                <div class="animatedLines">
+                    <div class="lines"></div>
+                    <div class="lines"></div>
+                    <div class="lines"></div>
+                    <div class="lines"></div>
+                    <div class="lines"></div>
+                    <div class="lines"></div>
+                    <div class="lines"></div>
+                </div>
+            `);
+            buttonIcon.appendChild(newItemAnimationArea);
+        }
+    }
+
+    // Boucle
+    loopTimer4 = setTimeout(() => {
+        isLooping4 = false;
+        animateListItem(cleanedRadioName);
+    }, 100);
+}
+
+// Pour annuler la boucle de l'extérieur
+export function killAnimateListItem() {
+    if (isLooping4) {
+        clearTimeout(loopTimer4); // Annule le timer
+        isLooping4 = false;
+        const buttonIconAnimationArea = document.getElementById('buttonIconAnimationArea');
+        if (buttonIconAnimationArea != null && buttonIconAnimationArea != undefined) {
+            buttonIconAnimationArea.remove();
+        }
+    }
+}
 // RENDERING ------------------------------------------------------------------
 
 export const renderPage = () => {
 
-    let shouldGenerateNewMusic = true;
+    shouldGenerateNewMusic = true;
 
     const getRadioIcon = (radio) => {
         return `
@@ -423,6 +492,8 @@ export const renderPage = () => {
         const result = match[1];
         if (result != radio.file) {
             music.pause(); // stoppe l'ancienne musique
+            killAnimateListItem();
+            isMusicLoaded = false;
         } else {
             shouldGenerateNewMusic = false;
         }
@@ -470,13 +541,17 @@ export const renderPage = () => {
         music.currentTime = startTime;
         music.addEventListener("canplaythrough", (event) => {
             isMusicLoaded = true;
+            const playPauseIcon = document.getElementById('playPauseIcon');
+            playPauseIcon.setAttribute('src', './medias/images/font-awsome/circle-pause-solid.svg');
+            playPauseIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue(currentRadio.color)}`);
             killLoader();
             music.play();
+            animateListItem(cleanString(radio.name));
           });
     }
 
     animateBackground(game, true);
-    setMusicInfos(radio);
+    setMusicInfos(radio, true);
     loopPreventInnerClick();
 
     page.style.background = '';

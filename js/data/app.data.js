@@ -1,4 +1,7 @@
 export const APP_NAME = "GTA Radios (bêta)"
-export const APP_VERSION_NUMBER = '0.0.6';
-// v 0.0.6 : fix: loader container + suppression scrollbars + icone play
-// Manque : anim modale, favicon par radio
+export const APP_VERSION_NUMBER = '0.0.7';
+// v 0.0.7 : play gris avant que ça soit chargé + anim modale + icone lecture sur icone liste radios quand elle tourne
+/* 
+    Manque : 
+        favicon par radio (vraiement ?)
+*/
