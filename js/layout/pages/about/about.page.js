@@ -40,6 +40,12 @@ export const renderPage = () => {
                 FontAwsome<br>
                 <a href="https://fontawesome.com/">https://fontawesome.com/</a>
             </span>
+            <span class="about-credit">
+                <b>"Coming soon" image</b><br>
+                nuraghies<br>
+                on <a href="https://www.freepik.com/free-vector/coming-soon-text-grunge-background_30515944.htm#query=coming%20soon%20png&position=8&from_view=keyword&track=ais">Freepik</a> 
+            </span>
+            
             ${renderCreditsForIterations(6)}
         </div>`);
     page.appendChild(topPart);

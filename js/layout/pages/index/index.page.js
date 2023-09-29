@@ -11,7 +11,7 @@ export const renderHeader = () => {
     const pageTitle = LAZR.APP_DATA.getAppName();
     LAZR.DOM.setHTMLTitle(pageTitle);
 
-    const logo = LAZR.DOM.createImgElement('headerLogo', 'header-logo', './medias/images/LOGO.png', 'logo appli')
+    const logo = LAZR.DOM.createImgElement('headerLogo', 'header-logo', './medias/images/LOGO.webp', 'logo appli')
     HEADER.edit(
         false, 
         logo, 
@@ -22,10 +22,12 @@ export const renderHeader = () => {
 const getGamesButtons = () => {
     let string = '';
     GAMES.forEach(game => {
+        const subPath = game.name == 'San Andreas' ? game.cover : `${game.cover}-unavailable`
+        const path = `./medias/images/covers/${subPath}.webp`;
         string += `
             <button 
                 class="game-button ${game.name == 'San Andreas' ? '' : 'inactive-button'}" 
-                style="background-image: url(./medias/images/covers/${game.cover}.webp)" 
+                style="background-image: url(${path})" 
                 ${game.name == 'San Andreas' ? '' : 'disabled'}
                 onclick="navigateTo('./?page=gameRadios&gameId=${game.id}')"></button>
         `

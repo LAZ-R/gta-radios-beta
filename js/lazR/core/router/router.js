@@ -82,7 +82,7 @@ window.onhashchange = () => {
             //console.log('BACK TO ROOT STACK')
             navigateBackward(true);
             setTimeout(() => {
-                const logo = DOM.createImgElement('headerLogo', 'header-logo', './medias/images/LOGO.png', 'logo appli')
+                const logo = DOM.createImgElement('headerLogo', 'header-logo', './medias/images/LOGO.webp', 'logo appli')
                 HEADER.edit(
                     false, 
                     logo, 
@@ -96,7 +96,7 @@ window.onhashchange = () => {
                 //console.log('BACK TO HOME BUT IS NOT ROOT STACK')
                 navigateBackward(false);
                 setTimeout(() => {
-                    const logo = DOM.createImgElement('headerLogo', 'header-logo', './medias/images/LOGO.png', 'logo appli')
+                    const logo = DOM.createImgElement('headerLogo', 'header-logo', './medias/images/LOGO.webp', 'logo appli')
                     HEADER.edit(
                         false, 
                         logo, 
