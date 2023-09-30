@@ -38,8 +38,9 @@ export const renderPage = () => {
     const getRadioButton = (radio) => {
         return `
             <button
-                class="radio-button"
-                onclick="navigateTo('./?page=radio&gameId=${radio.game_id}&radioId=${radio.id}')">
+                class="radio-button ${radio.available ? '' : 'radio-button-unavailable'}"
+                onclick="navigateTo('./?page=radio&gameId=${radio.game_id}&radioId=${radio.id}')"
+                ${radio.available ? '' : 'disabled'}>
                 ${getRadioIcon(radio)}
                 <div class="radio-infos">
                     <span class="radio-name">${radio.name}</span>

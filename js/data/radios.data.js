@@ -3,6 +3,7 @@ export const RADIOS = [
     {
         id:      1,
         game_id: 1,
+        available: true,
         name:    'Bounce FM',
         icon:    'san-andreas-bounce-fm',
         file:    'san-andreas-bounce-fm',
@@ -32,6 +33,7 @@ export const RADIOS = [
     {
         id:      2,
         game_id: 1,
+        available: true,
         name:    'CSR 103.9',
         icon:    'san-andreas-csr-103-9',
         file:    'san-andreas-csr-103-9',
@@ -57,6 +59,7 @@ export const RADIOS = [
     {
         id:      3,
         game_id: 1,
+        available: true,
         name:    'K-DST',
         icon:    'san-andreas-k-dst',
         file:    'san-andreas-k-dst',
@@ -86,6 +89,7 @@ export const RADIOS = [
     {
         id:      4,
         game_id: 1,
+        available: true,
         name:    'K-JAH West',
         icon:    'san-andreas-k-jah-west',
         file:    'san-andreas-k-jah-west',
@@ -114,6 +118,7 @@ export const RADIOS = [
     {
         id:      5,
         game_id: 1,
+        available: true,
         name:    'K-Rose',
         icon:    'san-andreas-k-rose',
         file:    'san-andreas-k-rose',
@@ -141,6 +146,7 @@ export const RADIOS = [
     {
         id:      6,
         game_id: 1,
+        available: true,
         name:    'Master Sounds 98.3',
         icon:    'san-andreas-master-sounds-98-3',
         file:    'san-andreas-master-sounds-98-3',
@@ -171,6 +177,7 @@ export const RADIOS = [
     {
         id:      7,
         game_id: 1,
+        available: true,
         name:    'Playback FM',
         icon:    'san-andreas-playback-fm',
         file:    'san-andreas-playback-fm',
@@ -195,6 +202,7 @@ export const RADIOS = [
     {
         id:      8,
         game_id: 1,
+        available: true,
         name:    'Radio Los Santos',
         icon:    'san-andreas-radio-los-santos',
         file:    'san-andreas-radio-los-santos',
@@ -223,6 +231,7 @@ export const RADIOS = [
     {
         id:      9,
         game_id: 1,
+        available: true,
         name:    'Radio X',
         icon:    'san-andreas-radio-x',
         file:    'san-andreas-radio-x',
@@ -250,6 +259,7 @@ export const RADIOS = [
     {
         id:      10,
         game_id: 1,
+        available: true,
         name:    'SF-UR',
         icon:    'san-andreas-sf-ur',
         file:    'san-andreas-sf-ur',
@@ -278,6 +288,7 @@ export const RADIOS = [
     {
         id:      11,
         game_id: 1,
+        available: true,
         name:    'WCTR',
         icon:    'san-andreas-wctr',
         file:    'san-andreas-wctr',
@@ -285,4 +296,162 @@ export const RADIOS = [
         host:    'Lianne Forget, Derrick Thackery, James Pedeaston, Billy Dexter, Lazlow Jones, Maurice, Peyton Philips & Mary Philips, Christy MacIntyre',
         color:   '#d301f9',
     },
+
+
+    // VICE CITY ------------------------------------------------------------------
+
+    {
+        id:      12,
+        game_id: 2,
+        available: false,
+        name:    "Wildstyle",
+        icon:    "vice-city-wildstyle",
+        file:    "vice-city-flash-fm",
+        genre:   "Old school Hip-hop, Electro",
+        host:    "Mr. Magic",
+        color:   "#fef100",
+        /* playlist: [
+            { start:   14, end:  259, artist: "Jomanda", name: "Make My Body Rock" },
+        ] */
+    },
+    {
+        id:      13,
+        game_id: 2,
+        available: true,
+        name:    "Flash FM",
+        icon:    "vice-city-flash-fm",
+        file:    "vice-city-flash-fm",
+        genre:   "Pop, Pop-rock, Dance, Dance-rock, New wave",
+        host:    "Toni",
+        color:   "#fcb912",
+        playlist: [
+            { start:    8, end:  198, artist: "Daryl Hall & John Oates",  name: "Out Of Touch" },
+            { start:  255, end:  437, artist: "Wang Chung",               name: "Dance Hall Days" },
+            { start:  451, end:  696, artist: "Michael Jackson",          name: "Billie Jean" },
+            { start:  698, end:  916, artist: "Laura Branigan",           name: "Self Control" },
+            { start:  980, end: 1185, artist: "Go West",                  name: "Call Me" },
+            { start: 1187, end: 1392, artist: "INXS",                     name: "Kiss The Dirt (Falling Down The Mountain)" },
+            { start: 1472, end: 1662, artist: "Bryan Adams",              name: "Run To You" },
+            { start: 1681, end: 1915, artist: "Electric Light Orchestra", name: "Four Little Diamonds" },
+            { start: 1916, end: 2126, artist: "Yes",                      name: "Owner Of A Lonely Heart" },
+            { start: 2170, end: 2366, artist: "The Buggles",              name: "Video Killed The Radio Star" },
+            { start: 2368, end: 2593, artist: "Aneka",                    name: "Japanese Boy" },
+            { start: 2672, end: 2884, artist: "Talk Talk",                name: "Life's What You Make It" },
+            { start: 2885, end: 3055, artist: "The Outfield",             name: "Your Love" },
+            { start: 3173, end: 3354, artist: "Joe Jackson",              name: "Steppin' Out" },
+            { start: 3370, end: 3545, artist: "The Fixx",                 name: "One Thing Leads To Another" },
+            { start: 3589, end: 3772, artist: "Lionel Ritchie",           name: "Running With The Night" },
+        ]
+    },
+    {
+        id:      14,
+        game_id: 2,
+        available: true,
+        name:    "Fever 105",
+        icon:    "vice-city-fever-105",
+        file:    "vice-city-fever-105",
+        genre:   "Disco, Soul, Funk, R&B",
+        host:    "Oliver 'Ladykiller' Biscuit",
+        color:   "#fc0000",
+        playlist: [
+            { start:    4, end:  269, artist: "The Whispers",              name: "And the Beat Goes On" },
+            { start:  272, end:  526, artist: "Fat Larry's Band",          name: "Act Like You Know" },
+            { start:  560, end:  889, artist: "Oliver Cheatham",           name: "Get Down Saturday Night" },
+            { start:  963, end: 1240, artist: "Pointer Sisters",           name: "Automatic" },
+            { start: 1242, end: 1483, artist: "René & Angela",             name: "I'll Be Good" },
+            { start: 1486, end: 1764, artist: "Mary Jane Girls",           name: "All Night Long" },
+            { start: 1822, end: 2078, artist: "Rick James",                name: "Ghetto Life" },
+            { start: 2079, end: 2434, artist: "Michael Jackson",           name: "Wanna Be Startin' Somethin'" },
+            { start: 2437, end: 2703, artist: "Evelyn \"Champagne\" King", name: "Shame" },
+            { start: 2746, end: 2951, artist: "Teena Marie",               name: "Behind the Groove" },
+            { start: 2959, end: 3223, artist: "Mtume",                     name: "Juicy Fruit" },
+            { start: 3224, end: 3476, artist: "Kool & the Gang",           name: "Summer Madness" },
+            { start: 3539, end: 3787, artist: "Indeep",                    name: "Last Night a D.J. Saved My Life" },
 ]
+    },
+    {
+        id:      15,
+        game_id: 2,
+        available: false,
+        name:    "V-Rock",
+        icon:    "vice-city-v-rock",
+        file:    "vice-city-flash-fm",
+        genre:   "Hard rock, Heavy metal, Glam metal, Thrash metal",
+        host:    "Lazlow",
+        color:   "#e41a28",
+        /* playlist: [
+            { start:   14, end:  259, artist: "Jomanda", name: "Make My Body Rock" },
+        ] */
+    },
+    {
+        id:      16,
+        game_id: 2,
+        available: false,
+        name:    "Espantoso",
+        icon:    "vice-city-espantoso",
+        file:    "vice-city-flash-fm",
+        genre:   "Mambo, Salsa, Jazz, Funk",
+        host:    "Pepe",
+        color:   "#d91b27",
+        /* playlist: [
+            { start:   14, end:  259, artist: "Jomanda", name: "Make My Body Rock" },
+        ] */
+    },
+    {
+        id:      17,
+        game_id: 2,
+        available: false,
+        name:    "Emotion 98.3",
+        icon:    "vice-city-emotion-98-3",
+        file:    "vice-city-flash-fm",
+        genre:   "Power ballad, Soft rock",
+        host:    "Fernando",
+        color:   "#b60201",
+        /* playlist: [
+            { start:   14, end:  259, artist: "Jomanda", name: "Make My Body Rock" },
+        ] */
+    },
+    {
+        id:      18,
+        game_id: 2,
+        available: false,
+        name:    "Wave 103",
+        icon:    "vice-city-wave-103",
+        file:    "vice-city-flash-fm",
+        genre:   "New wave, Synthpop",
+        host:    "Adam First",
+        color:   "#32bb9f",
+        /* playlist: [
+            { start:   14, end:  259, artist: "Jomanda", name: "Make My Body Rock" },
+        ] */
+    },
+    {
+        id:      19,
+        game_id: 2,
+        available: false,
+        name:    "K-CHAT",
+        icon:    "vice-city-k-chat",
+        file:    "vice-city-flash-fm",
+        genre:   "Talk show",
+        host:    "Amy Sheckenhausen",
+        color:   "#bfeae9",
+        /* playlist: [
+            { start:   14, end:  259, artist: "Jomanda", name: "Make My Body Rock" },
+        ] */
+    },
+    {
+        id:      20,
+        game_id: 2,
+        available: false,
+        name:    "VCPR",
+        icon:    "vice-city-vc-pr",
+        file:    "vice-city-flash-fm",
+        genre:   "Talk show",
+        host:    "Maurice Chavez",
+        color:   "#005666",
+        /* playlist: [
+            { start:   14, end:  259, artist: "Jomanda", name: "Make My Body Rock" },
+        ] */
+    },
+]
+

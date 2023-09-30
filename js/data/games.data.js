@@ -2,6 +2,7 @@ export const GAMES = [
     {
         id: 1,
         name: 'San Andreas',
+        available: true,
         cover: 'sa-cover',
         backgrounds: [
             'san-andreas-bg-01',
@@ -23,14 +24,25 @@ export const GAMES = [
     {
         id: 2,
         name: 'Vice City',
+        available: false,
         cover: 'vc-cover',
         backgrounds: [
-            '',
+            'vice-city-bg-01',
+            'vice-city-bg-02',
+            'vice-city-bg-03',
+            'vice-city-bg-04',
+            'vice-city-bg-05',
+            'vice-city-bg-06',
+            'vice-city-bg-07',
+            'vice-city-bg-08',
+            'vice-city-bg-09',
+            'vice-city-bg-10',
         ]
     },
     {
         id: 3,
         name: 'III',
+        available: false,
         cover: 'iii-cover',
         backgrounds: [
             '',
