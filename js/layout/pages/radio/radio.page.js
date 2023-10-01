@@ -328,14 +328,14 @@ const onPlaylistModalClick = (radioColor) => {
                     <div class="modal-inner-div">
                         <span class="modal-title">${currentRadio.name}</span>
                         <!-- <span class="modal-sub-title">Animée par</span> -->
-                        <span class="modal-sub-title" style="font-weight: 100;margin-bottom: 20px">${currentRadio.host}</span>
+                        <span class="modal-sub-title" style="font-weight: 100;margin-bottom: 30px">${currentRadio.host}</span>
                         ${getPlaylistElement()}
                     </div>
                 </div>
             `);
-            modalBackground.addEventListener('click', () => {
+            modalBackground.addEventListener('click', (e) => {
                 destroyModal(true);
-            })
+            });
             body.appendChild(modalBackground);
             setTimeout(() => {
                 let modalBg = document.getElementById('modalBackground');
@@ -368,11 +368,21 @@ export const cleanString = (string) => {
     return cleanedString;
 }
 
+const setMusic = (musicStartTime, musicEndTime) => {
+    if (music.currentTime > musicEndTime || music.currentTime < musicStartTime) {
+        music.currentTime = musicStartTime;
+    }
+    if (music.paused) {
+        music.play();
+    }
+}
+window.setMusic = setMusic;
+
 const getPlaylistElement = () => {
     let string = `<div class="playlist-table">`;
     currentRadio.playlist.forEach(title => {
         string += `
-            <div id="music-row-${cleanString(title.name)}" class="playlist-table-row">
+            <div id="music-row-${cleanString(title.name)}" class="playlist-table-row" onclick="setMusic(${title.start}, ${title.end})")>
                 <div class="playlist-table-name-div">
                     <span>${title.name}</span>
                 </div>

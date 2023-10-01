@@ -15,18 +15,18 @@ export const renderHeader = () => {
 
     const logo = LAZR.DOM.createImgElement('headerLogo', 'header-logo', './medias/images/LOGO.webp', 'logo appli');
 
-    // BACKDOOR VICE CITY
-    logo.addEventListener('click', () => {
+    // BACKDOOR 
+    /* logo.addEventListener('click', () => {
         headerClicks += 1;
         console.log(headerClicks);
         if (headerClicks == 5) {
-            const button = document.getElementById(`gameButton2`);
+            const button = document.getElementById(`gameButton??`);
             button.removeAttribute('disabled');
         }
         setTimeout(() => {
             headerClicks = 0;
         }, 3000);
-    })
+    }) */
     
     HEADER.edit(
         false, 

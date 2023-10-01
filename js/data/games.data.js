@@ -24,7 +24,7 @@ export const GAMES = [
     {
         id: 2,
         name: 'Vice City',
-        available: false,
+        available: true,
         cover: 'vc-cover',
         backgrounds: [
             'vice-city-bg-01',
@@ -36,7 +36,6 @@ export const GAMES = [
             'vice-city-bg-07',
             'vice-city-bg-08',
             'vice-city-bg-09',
-            'vice-city-bg-10',
         ]
     },
     {
