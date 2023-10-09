@@ -298,7 +298,7 @@ export const RADIOS = [
     },
 
 
-    // VICE CITY ------------------------------------------------------------------
+    // VICE CITY --------------------------------------------------------------
 
     {
         id:      12,
@@ -516,5 +516,183 @@ export const RADIOS = [
         color:   "#005e77",
         /* playlist: [] */
     },
+
+    // GTA III ----------------------------------------------------------------
+
+    {
+        id:      21,
+        game_id: 3,
+        available: true,
+        name:    "Head Radio",
+        icon:    "gta-iii-head-radio",
+        file:    "gta-iii-head-radio",
+        genre:   "Pop, Rock",
+        host:    "Michael Hunt",
+        color:   "#6da7a8",
+        playlist: [
+            { start:   27, end:  154, artist: "Dil Don't",     name: "Stripe Summer" },
+            { start:  208, end:  371, artist: "Whatever",      name: "Good Thing" },
+            { start:  371, end:  557, artist: "Craig Gray",    name: "Fade Away" },
+            { start:  571, end:  734, artist: "Conor and Jay", name: "Change" },
+            { start:  784, end:  959, artist: "Frankie Fame",  name: "See Through You" },
+            { start:  968, end: 1111, artist: "Scatwerk",      name: "Electronic Go Go" },
+            { start: 1174, end: 1312, artist: "Dezma",         name: "Life Is But A Mere Supply" },
+        ]
+    },
+    {
+        id:      22,
+        game_id: 3,
+        available: true,
+        name:    "Double Clef FM",
+        icon:    "gta-iii-double-clef-fm",
+        file:    "gta-iii-double-clef-fm",
+        genre:   "Classique",
+        host:    "Morgan Merryweather",
+        color:   "#2f6576",
+        playlist: [
+            { start:    8, end:  221, artist: "Wolfgang Amadeus Mozart", name: "Non piu andrai farfallone amoroso" },
+            { start:  238, end:  365, artist: "Giacomo Puccini",         name: "O mio babbino caro" },
+            { start:  546, end:  725, artist: "Giuseppe Verdi",          name: "Libiamo ne'lieti calici" },
+            { start:  748, end:  963, artist: "Gaetano Donizetti",       name: "Chi mi frena in tal momento" },
+            { start: 1093, end: 1286, artist: "Giuseppe Verdi",          name: "La donna è mobile" },
+            { start: 1300, end: 1361, artist: "Wolfgang Amadeus Mozart", name: "Finch'han del vino" },
+        ]
+    },
+    {
+        id:      23,
+        game_id: 3,
+        available: true,
+        name:    "K-JAH Radio",
+        icon:    "gta-iii-k-jah-radio",
+        file:    "gta-iii-k-jah-radio",
+        genre:   "Reggae, Dub",
+        host:    "Horace \"The Pacifist\" Wesh",
+        color:   "#59c949",
+        playlist: [
+            { start:   3, end:  240, artist: "Scientist", name: "Dance of the Vampires" },
+            { start: 241, end:  517, artist: "Scientist", name: "Your Teeth In My Neck" },
+            { start: 519, end:  710, artist: "Scientist", name: "The Corpse Rises" },
+            { start: 727, end:  991, artist: "Scientist", name: "The Mummy's Shroud" },
+            { start: 993, end: 1144, artist: "Scientist", name: "Plague of Zombies" },
+        ]
+    },
+    {
+        id:      24,
+        game_id: 3,
+        available: true,
+        name:    "Rise FM",
+        icon:    "gta-iii-rise-fm",
+        file:    "gta-iii-rise-fm",
+        genre:   "Trance, Rave",
+        host:    "Andre \"The Accelerator\" and Terry Donovan",
+        color:   "#b7b7b7",
+        playlist: [
+            { start:    0, end:   95, artist: "Chris Walsh & Dave Beran", name: "Shake (Revolt Clogrock Remix)" },
+            { start:   95, end:  315, artist: "Shiver",                   name: "Deep Time" },
+            { start:  315, end:  563, artist: "R.R.D.S.",                 name: "Innerbattle" },
+            { start:  563, end:  841, artist: "Slyder",                   name: "Score (Original Mix)" },
+            { start:  841, end: 1256, artist: "Slyder",                   name: "Neo (The One)" },
+            { start: 1256, end: 1568, artist: "Chris Walsh & Dave Beran", name: "Shake (End Mix)" },
+        ]
+    },
+    {
+        id:      25,
+        game_id: 3,
+        available: true,
+        name:    "Lips 106",
+        icon:    "gta-iii-lips-106",
+        file:    "gta-iii-lips-106",
+        genre:   "Pop, Soul",
+        host:    "Andee",
+        color:   "#4b69ac",
+        playlist: [
+            { start:   74, end:  205, artist: "Fatamarse",        name: "Bump To The Music" },
+            { start:  333, end:  528, artist: "April's In Paris", name: "Feels Like I Just Can't Take No More" },
+            { start:  530, end:  699, artist: "Lucy",             name: "Forever" },
+            { start:  708, end:  927, artist: "Boyz 2 Girlz",     name: "Pray It Goes Ok?" },
+            { start:  938, end: 1055, artist: "Da Shootaz",       name: "Grand Theft Auto (Joyride)" },
+            { start: 1061, end: 1200, artist: "Funky Bjs",        name: "Rubber Tip" },
+        ]
+    },
+    {
+        id:      26,
+        game_id: 3,
+        available: true,
+        name:    "Game Radio FM",
+        icon:    "gta-iii-game-radio-fm",
+        file:    "gta-iii-game-radio-fm",
+        genre:   "Hip-hop, Rap",
+        host:    "Stretch Armstrong & Lord Sear",
+        color:   "#017c60",
+        playlist: [
+            { start:   0, end:   5, artist: "Rush",                         name: "Instrumental Bed 1" },
+            { start:   5, end:  32, artist: "Reef",                         name: "Scary Movies Instrumental" },
+            { start:  32, end: 162, artist: "Royce Da 5'9\"",               name: "We're Live Danger" },
+            { start: 162, end: 227, artist: "Nature",                       name: "Nature Freestyle" },
+            { start: 228, end: 299, artist: "JoJo Pellegrino",              name: "JoJo Pellegrino Freestyle" },
+            { start: 314, end: 320, artist: "Rush",                         name: "Instrumental Bed 1" },
+            { start: 320, end: 455, artist: "Royce Da 5'9\" & Pretty Ugly", name: "Spit Game" },
+            { start: 455, end: 615, artist: "Royce Da 5'9\"",               name: "I'm the King" },
+            { start: 645, end: 697, artist: "Rush",                         name: "Instrumental Bed 1" },
+            { start: 697, end: 770, artist: "Black Rob",                    name: "By a Stranger" },
+            { start: 770, end: 916, artist: "Agallah & Sean Price",         name: "Rising to the Top" },
+            { start: 916, end: 944, artist: "Rush",                         name: "Instrumental Bed 2" },
+        ]
+    },
+    {
+        id:      27,
+        game_id: 3,
+        available: true,
+        name:    "MSX FM",
+        icon:    "gta-iii-msx-fm",
+        file:    "gta-iii-msx-fm",
+        genre:   "Drum and bass",
+        host:    "MC Codebreaker and Timecode",
+        color:   "#949195",
+        playlist: [
+            { start:    0, end:  171, artist: "Calyx",           name: "Quagmire" },
+            { start:  171, end:  354, artist: "Rascal & Klone",  name: "Get Wild" },
+            { start:  354, end:  482, artist: "Ryme Tyme",       name: "Judgement Day" },
+            { start:  482, end:  568, artist: "Hex",             name: "Force" },
+            { start:  568, end:  651, artist: "Omni Trio",       name: "First Contact" },
+            { start:  651, end:  759, artist: "Aquasky",         name: "Spectre" },
+            { start:  759, end: 1045, artist: "Rascal & Klone",  name: "Winner Takes All" },
+            { start: 1048, end: 1093, artist: "Ryme Tyme",       name: "T Minus" },
+            { start: 1093, end: 1274, artist: "nCode",           name: "Spasm" },
+            { start: 1274, end: 1392, artist: "D. Kay",          name: "Monolith" },
+            { start: 1392, end: 1500, artist: "Dom & Ryme Tyme", name: "Iceberg" },
+        ]
+    },
+    {
+        id:      28,
+        game_id: 3,
+        available: true,
+        name:    "Flashback FM 95.6",
+        icon:    "gta-iii-flashback-fm-95-6",
+        file:    "gta-iii-flashback-fm-95-6",
+        genre:   "Pop, Disco, Electro, New wave",
+        host:    "Toni",
+        color:   "#feb70d",
+        playlist: [
+            { start:   3, end:  193, artist: "Giorgio Moroder & Debbie Harry",    name: "Rush Rush" },
+            { start: 243, end:  442, artist: "Giorgio Moroder & Elizabeth Daily", name: "Shake It Up" },
+            { start: 526, end:  672, artist: "Giorgio Moroder & Paul Engemann",   name: "Scarface (Push It to the Limit)" },
+            { start: 678, end:  884, artist: "Giorgio Moroder & Amy Holland",     name: "She's On Fire" },
+            { start: 939, end: 1110, artist: "Giorgio Moroder & Elizabeth Daily", name: "I'm Hot Tonight" },
+        ]
+    },
+    {
+        id:      29,
+        game_id: 3,
+        available: true,
+        name:    "Chatterbox FM",
+        icon:    "gta-iii-chatterbox-fm",
+        file:    "gta-iii-chatterbox-fm",
+        genre:   "Talk show",
+        host:    "Lazlow",
+        color:   "#a2d5cc",
+        /* playlist: [] */
+    },
+    
 ]
 

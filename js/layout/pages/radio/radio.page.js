@@ -533,7 +533,7 @@ export const renderPage = () => {
         <div class="radio-controls-container">
             <button id="radioLikeButton" class="music-control-button radio-like-button" onclick="onLikeClick('${radio.color}', '${radio.id}')">${getLikeButtonIcon(radio)}</button>
             <button id="playPauseButton" class="music-control-button play-pause-button" onclick="playPause()">${getPlayPauseButtonIcon(radio)}</button>
-            <button id="playlistModalButton" class="music-control-button playlist-modal-button" onclick="onPlaylistModalClick('${radio.color}')">${getPlaylistModalButtonIcon()}</button>
+            <button id="playlistModalButton" class="music-control-button playlist-modal-button" onclick="onPlaylistModalClick('${radio.color}')">${currentRadio.playlist != undefined ? getPlaylistModalButtonIcon() : ''}</button>
         </div>
     `);
 
