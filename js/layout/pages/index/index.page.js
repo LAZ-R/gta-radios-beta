@@ -20,7 +20,7 @@ export const renderHeader = () => {
         headerClicks += 1;
         console.log(headerClicks);
         if (headerClicks == 5) {
-            const button = document.getElementById(`gameButton??`);
+            const button = document.getElementById(`gameButton4`);
             button.removeAttribute('disabled');
         }
         setTimeout(() => {

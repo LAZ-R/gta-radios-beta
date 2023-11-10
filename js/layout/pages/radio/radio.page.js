@@ -184,7 +184,7 @@ const setMusicInfos = (radio, isFirstTime) => {
                         rowElement.style.backgroundColor = "#2b2b2b"
                     }
                     
-                    if (musicName != musicNameContainer.innerHTML && musicArtist != musicArtistContainer.innerHTML) {
+                    if (musicName != musicNameContainer.innerHTML) {
                         musicNameContainer.innerHTML = musicName;
                         musicArtistContainer.innerHTML = musicArtist;
 
@@ -270,12 +270,12 @@ const playPause = () => {
         playPauseIcon.setAttribute('src', './medias/images/font-awsome/circle-pause-solid.svg');
         playPauseIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue(currentRadio.color)}`);
         music.play();
-        animateListItem(currentRadio);
+        animateListItem(cleanString(currentRadio.name));
     } else {
         playPauseIcon.setAttribute('src', './medias/images/font-awsome/circle-play-regular.svg');
         playPauseIcon.setAttribute('style', `filter: ${FILTER.getFilterStringForHexValue('#878787')}`);
         music.pause();
-        killAnimateListItem(currentRadio);
+        killAnimateListItem();
     }
 }
 window.playPause = playPause;
@@ -500,12 +500,16 @@ export const renderPage = () => {
         const pattern = /radios\/(.*?)\.mp3/;
         const match = music.src.match(pattern);
         const result = match[1];
-        if (result != radio.file) {
+        if (result != radio.file) { 
             music.pause(); // stoppe l'ancienne musique
             killAnimateListItem();
             isMusicLoaded = false;
         } else {
             shouldGenerateNewMusic = false;
+            if (music.paused) {
+                music.play();
+                animateListItem(cleanString(currentRadio.name));
+            }
         }
     }
 

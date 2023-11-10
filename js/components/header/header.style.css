@@ -44,6 +44,7 @@ header {
 
 .header-logo {
     height: 80%;
+    z-index: 500;
 }
 
 .header-title {
